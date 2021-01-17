@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
+  
+  post 'likes/:post_id/create' => 'likes#create'
 end
