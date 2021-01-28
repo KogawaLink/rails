@@ -6,6 +6,11 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
   
+  def top
+    @topic = Topic.all.order(:topic_id)
+  end
+  
+  
   def create
     @topic = current_user.topics.new(topic_params)
     
