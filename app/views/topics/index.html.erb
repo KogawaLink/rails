@@ -22,11 +22,7 @@
             <p class="topic-text">
               <%= topic.description %>
             </p>
-            <% topic.comments.each do |comment| %>
-              <div class="topic-text">
-                <%= comment.content %>
-              </div>
-            <% end %>
+            <%= render 'comments', topic: topic %>
           </div>
         </div>
       </div>
