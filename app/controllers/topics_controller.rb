@@ -10,6 +10,11 @@ class TopicsController < ApplicationController
     @topic = Topic.all.order(:topic_id)
   end
   
+  def show
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments
+    @comment = @topic.comments.build
+  end
   
   def create
     @topic = current_user.topics.new(topic_params)
