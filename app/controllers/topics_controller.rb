@@ -1,13 +1,10 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only: [:index]
   def index
-    @topics = Topic.all.includes(:favorite_users)
+    @topics = Topic.all.order(id: "DESC").includes(:favorite_users)
   end
   def new
     @topic = Topic.new
-  end
-  
-  def top
-    @topic = Topic.all.order(:topic_id)
   end
   
   def show
@@ -26,7 +23,11 @@ class TopicsController < ApplicationController
       render :new
     end
   end
-
+  
+  def set_topic
+    @topics = Topic.all.includes(:favorite_users)
+  end
+  
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
