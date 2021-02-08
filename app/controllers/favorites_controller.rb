@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
   end
   
   def destroy
-    Favorite.find_by(params[:topic_id]).destroy
+    Favorite.find_by(topic_id: params[:topic_id]).destroy
     flash[:success] = 'お気に入りを解除しました'
     redirect_to topics_path
   end
